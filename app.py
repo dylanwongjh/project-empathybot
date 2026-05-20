@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify, session
 from flask_cors import CORS
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 from datetime import datetime
 import json
 import re
@@ -12,6 +11,7 @@ import secrets
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CHROMA_DB_PATH = os.path.join(BASE_DIR, "chroma_db") # Local folder for ChromaDB persistence
 CASE_STUDIES_DIR = os.path.join(BASE_DIR, "case_studies") # Folder containing case study text files
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
 # Handle imports with better error handling
 try:
