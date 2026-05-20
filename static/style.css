@@ -445,32 +445,6 @@ header p {
     line-height: 1.7;
 }
 
-#resourcesButton {
-    background: white;
-    color: var(--terracotta);
-    border: 1.5px solid var(--terracotta);
-    border-radius: 2rem;
-    padding: 0.55rem 1.25rem;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    transition: background 0.25s ease, color 0.25s ease;
-}
-
-#resourcesButton:hover {
-    background: var(--terracotta);
-    color: white;
-}
-
-/* Added new resources for the conversation guides */
-.resources-toggle-bar {
-    padding: 0.75rem 1.5rem;
-    border-top: 1px solid var(--border-warm);
-    text-align: center;
-    background: var(--cream-dark);
-}
 
 .framework-tabs {
     display:flex;
@@ -816,4 +790,356 @@ header p {
     padding: 0.75rem 1rem;
     font-size: 0.82rem;
     color: var(--soft-charcoal);
+}
+
+/* ============================================================
+   14. Resources Toggle Bar & End Session Button
+   ============================================================ */
+.resources-toggle-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid var(--border-warm);
+    background: white;
+}
+
+#resourcesButton {
+    flex: 1;
+    background: transparent;
+    border: 1.5px solid var(--border-warm);
+    color: var(--soft-charcoal);
+    padding: 0.55rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+#resourcesButton:hover {
+    background: var(--cream-dark);
+    border-color: var(--accent-peach);
+}
+
+#endSessionButton {
+    background: var(--terracotta);
+    border: none;
+    color: white;
+    padding: 0.55rem 1.25rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 2px 10px rgba(181,112,91,0.28);
+    white-space: nowrap;
+}
+
+#endSessionButton:hover {
+    background: var(--terracotta-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(181,112,91,0.35);
+}
+
+/* ============================================================
+   15. Debrief Modal
+   ============================================================ */
+.debrief-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 30, 20, 0.55);
+    backdrop-filter: blur(3px);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.debrief-modal {
+    background: var(--cream);
+    border-radius: 1rem;
+    box-shadow: 0 16px 60px rgba(44,30,20,0.22);
+    border: 1px solid var(--border-warm);
+    width: 100%;
+    max-width: 42rem;
+    max-height: 88vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.debrief-modal::-webkit-scrollbar       { width: 4px; }
+.debrief-modal::-webkit-scrollbar-track { background: transparent; }
+.debrief-modal::-webkit-scrollbar-thumb { background: var(--border-warm); border-radius: 2px; }
+
+.debrief-header {
+    background: linear-gradient(160deg, #EDD5C5 0%, var(--primary-peach) 60%, #D4A898 100%);
+    padding: 1.5rem 2rem 1.75rem;
+    text-align: center;
+    border-radius: 1rem 1rem 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.debrief-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 4rem;
+    background: var(--cream);
+    border-radius: 50%;
+}
+
+.debrief-header h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--dark-navy);
+    letter-spacing: 0.04em;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.3rem;
+}
+
+.debrief-header p {
+    font-size: 0.78rem;
+    color: var(--soft-charcoal);
+    opacity: 0.85;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    max-width: 34rem;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.debrief-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 4rem 2rem;
+    color: var(--soft-charcoal);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.debrief-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.debrief-summary-box {
+    margin: 1.5rem 2rem 1rem;
+    padding: 1rem 1.25rem;
+    background: white;
+    border: 1px solid var(--border-warm);
+    border-left: 3px solid var(--terracotta);
+    border-radius: 0.6rem;
+}
+
+.debrief-summary-box p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--dark-navy);
+    margin: 0;
+}
+
+.debrief-section-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--dark-navy);
+    padding: 0 2rem;
+    margin: 1.25rem 0 0.75rem;
+}
+
+/* Dimension score rows */
+.debrief-dimensions {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.dim-row {
+    background: white;
+    border: 1px solid var(--border-warm);
+    border-radius: 0.6rem;
+    padding: 0.85rem 1rem;
+}
+
+.dim-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.45rem;
+}
+
+.dim-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--dark-navy);
+}
+
+.dim-score {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.dim-denom {
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+.dim-bar-track {
+    height: 5px;
+    background: var(--border-warm);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 0.55rem;
+}
+
+.dim-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.6s ease;
+}
+
+.dim-justification {
+    font-size: 0.8rem;
+    color: var(--soft-charcoal);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Checklist */
+.debrief-fw-tabs {
+    margin: 0 2rem 0.75rem;
+}
+
+.debrief-checklist {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.checklist-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-warm);
+    background: white;
+}
+
+.checklist-row.demonstrated {
+    border-left: 3px solid #5A9E6F;
+}
+
+.checklist-row.missed {
+    border-left: 3px solid #C0714A;
+    opacity: 0.85;
+}
+
+.checklist-icon {
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding-top: 1px;
+    flex-shrink: 0;
+    width: 1rem;
+    text-align: center;
+}
+
+.checklist-row.demonstrated .checklist-icon { color: #5A9E6F; }
+.checklist-row.missed .checklist-icon        { color: #C0714A; }
+
+.checklist-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.checklist-step {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--dark-navy);
+}
+
+.checklist-note {
+    font-size: 0.78rem;
+    color: var(--soft-charcoal);
+    line-height: 1.45;
+}
+
+.debrief-error {
+    padding: 2rem;
+    text-align: center;
+    color: var(--terracotta);
+    font-size: 0.88rem;
+}
+
+.debrief-actions {
+    padding: 1.25rem 2rem 1.75rem;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid var(--border-warm);
+    margin-top: 0.5rem;
+}
+
+#debriefNewSession {
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    padding: 0.75rem 2.25rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+    box-shadow: 0 3px 12px rgba(181,112,91,0.30);
+}
+
+#debriefNewSession:hover {
+    background: var(--terracotta-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 18px rgba(181,112,91,0.35);
+}
+
+@media (max-width: 37.5rem) {
+    .debrief-modal {
+        border-radius: 0.75rem;
+        max-height: 95vh;
+    }
+    .debrief-summary-box,
+    .debrief-dimensions,
+    .debrief-section-title,
+    .debrief-fw-tabs,
+    .debrief-checklist,
+    .debrief-actions {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    .resources-toggle-bar {
+        padding: 0.65rem 1rem;
+    }
 }
