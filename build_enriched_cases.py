@@ -31,6 +31,7 @@ Topic: [Brief specific topic, e.g., Caregiver burnout, Anticipatory grief, etc.]
 === CLINICAL METADATA ===
 Caregiver Profile: [Infer age, relationship, or context if possible, else "Not specified"]
 Clinical Goal: [What the counselor is trying to achieve clinically]
+Summary: [1-2 sentence summary of the person's story, their primary source of suffering, and physical or emotional struggles]
 
 === PATIENT EMOTIONAL PROFILE ===
 Primary Emotions: [Comma-separated list of 2-4 single words only, e.g., Guilt, Terror, Sadness]
